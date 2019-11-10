@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  nasa_key : 'GaoG4702nIgR1xmwhZWQkvfvXalGzraaBkr5qW4B',
 };

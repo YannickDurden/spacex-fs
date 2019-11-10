@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" routerLink="/">
+		<img src="https://www.spacex.com/sites/spacex/files/spacex_logo_white.png" alt="logo-spacex">
+    </a>
+		<button class="navbar-toggler"
+            type="button"
+            aria-controls="navbarColor01"
+            [attr.aria-expanded]="!isCollapsed"
+            (click)="isCollapsed = !isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+		<div class="collapse navbar-collapse" id="navbarColor01" [ngbCollapse]="isCollasped">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link home-link" routerLink="/" routerLinkActive="active-link">HOME</a>
+				</li>
+        <li class="nav-item">
+					<a class="nav-link home-link" routerLink="/rockets" routerLinkActive="active-link">ROCKETS</a>
+				</li>
+        <li class="nav-item">
+					<a class="nav-link home-link" routerLink="/about" routerLinkActive="active-link">ABOUT</a>
+				</li>
+			</ul>
+		</div>
+</nav>
+<br>

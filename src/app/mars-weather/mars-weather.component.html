@@ -1,0 +1,49 @@
+<div class="row" *ngIf="weather">
+	<div class="col-sm-12 col-md-12">
+		<div class="card mb-2 box-shadow">
+			<div class="card-header">Latest Weather at Elysium Planitia</div>
+			<div class="card-body">
+				<div class="row">
+					<!-- Display only 4 last days -->
+					<div class="col-md-3" *ngFor="let solKey of weather.sol_keys | slice:3:7">
+						<div class="card-title">
+							<h5>Sol {{ solKey }}</h5>
+							<small>{{ weather[solKey].First_UTC | date:'EEEE d, MMMM yyyy' }}</small>
+						</div>
+						<div class="card-text table-responsive">
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Max</td>
+										<td class="text-right">
+											{{ weather[solKey].AT.mx }} °C
+										</td>
+									</tr>
+									<tr>
+										<td>Min</td>
+										<td class="text-right">
+											{{ weather[solKey].AT.mn }} °C
+										</td>
+									</tr>
+									<tr>
+										<td>Avg</td>
+										<td class="text-right">
+											{{ weather[solKey].AT.av }} °C
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="card-title">Chart</h5>
+						<div>
+							<canvas #chart></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

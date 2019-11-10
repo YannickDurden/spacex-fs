@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-sm-6 col-md-12 card-deck" *ngFor="let rocket of rockets">
+		<div class="card mb-2 box-shadow">
+      <div class="card-header">{{ rocket.rocket_name }}</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<p class="card-text">{{ rocket.description }}</p>
+						<a [routerLink]="['/rocket', rocket.rocket_id]" class="btn btn-primary more-info">More infos</a>
+					</div>
+					<div class="col-md-6 ml-auto mr-auto">
+						<img src="{{ displayRandomImage(rocket.flickr_images) }}" class="card-img-top mb-3 d-sm-none d-md-block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

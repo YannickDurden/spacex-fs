@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+		<div class="jumbotron pt-4 pb-4" *ngIf="companyInformations">
+			<h1 class="h4">{{ companyInformations.summary }}</h1>
+			<hr class="my-4">
+			<p class="lead mb-0">
+				<a class="btn btn-primary btn-lg" routerLink="rockets" role="button">Let's show some rockets</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<app-mars-weather></app-mars-weather>

@@ -1,0 +1,147 @@
+<!-- DESCRIPTION -->
+<div class="row">
+	<div class="col-sm-12 col-md-12 card-deck">
+		<div class="card mb-2">
+			<div class="card-header">
+				{{ rocket.rocket_name | uppercase }}
+			</div>
+			<div class="card-body">
+				<p>
+					{{ rocket.description }}
+				</p>
+				<p>
+					First flight: {{ rocket.first_flight | date:'EEEE d, MMMM yyyy'}} <br>
+          Wikipedia: <a href="{{ rocket.wikipedia }}">{{ rocket.wikipedia }}</a>
+				</p>
+				<p>
+					<span class="caption" id="caption">Success rate</span>
+					<ngb-progressbar type="info" aria-describedby="caption" [showValue]="true"
+						[value]="[rocket.success_rate_pct]" [striped]="true"  height="1rem">
+					</ngb-progressbar>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- SPECIFICATIONS -->
+<div class="row">
+	<div class="col-sm-12 col-md-12 card-deck">
+		<div class="card mb-2 box-shadow">
+      <div class="card-header">CHARACTERISTIC</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6">
+            <h5 class="card-title">Technical overview</h5>
+						<div class="card-text table-responsive">
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Booster</td>
+										<td class="text-right">
+											{{ rocket.boosters }}
+										</td>
+									</tr>
+									<tr>
+										<td>Stage</td>
+										<td class="text-right">
+											{{ rocket.stages }}
+										</td>
+									</tr>
+									<tr>
+										<td>Diameter</td>
+										<td class="text-right">
+											{{ rocket.diameter.meters }} m
+										</td>
+										<td class="text-right">
+											{{ rocket.diameter.feet }} ft
+										</td>
+									</tr>
+									<tr>
+										<td>Height</td>
+										<td class="text-right">
+											{{ rocket.height.meters }} m
+										</td>
+										<td class="text-right">
+											{{ rocket.height.feet }} ft
+										</td>
+									</tr>
+									<tr>
+										<td>Mass</td>
+										<td class="text-right">
+											{{ rocket.mass.kg }} kg
+										</td>
+										<td class="text-right">
+											{{ rocket.mass.lb }} lb
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h5 class="card-title">Engines</h5>
+						<div class="card-text table-responsive">
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Type</td>
+										<td class="text-right">
+											{{ rocket.engines.type }}
+										</td>
+									</tr>
+									<tr>
+										<td>Version</td>
+										<td class="text-right">
+											{{ rocket.engines.version }}
+										</td>
+									</tr>
+									<tr>
+										<td>Number</td>
+										<td class="text-right">
+											{{ rocket.engines.number }}
+										</td>
+									</tr>
+									<tr>
+										<td>Layout</td>
+										<td class="text-right">
+											{{ rocket.engines.layout }}
+										</td>
+									</tr>
+									<tr>
+										<td>Propellant 1</td>
+										<td class="text-right">
+											{{ rocket.engines.propellant_1 }}
+										</td>
+									</tr>
+									<tr>
+										<td>Propellant 2</td>
+										<td class="text-right">
+											{{ rocket.engines.propellant_2 }}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- CAROUSEL -->
+<div class="row">
+	<div class="col-sm-12 col-md-12 card-deck">
+		<div class="card mb-2">
+    <div class="card-header">IMAGES</div>
+			<div class="card-body">
+				<ngb-carousel *ngIf="rocket.flickr_images">
+					<ng-template ngbSlide *ngFor="let image of rocket.flickr_images">
+						<div class="picsum-img-wrapper">
+							<img [src]="[image]" alt="Random rocket image" class="mx-auto d-block img-fluid">
+            </div>
+					</ng-template>
+				</ngb-carousel>
+			</div>
+		</div>
+	</div>
+</div>
