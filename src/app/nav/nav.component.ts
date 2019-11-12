@@ -13,4 +13,8 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.isCollasped = true;
   }
+
+  toggle() {
+    this.isCollasped = !this.isCollasped;
+  }
 }

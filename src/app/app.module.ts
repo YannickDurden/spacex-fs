@@ -10,6 +10,7 @@ import { RocketComponent } from './rocket/rocket.component';
 import { RocketsComponent } from './rockets/rockets.component';
 import { AboutComponent } from './about/about.component';
 import { MarsWeatherComponent } from './mars-weather/mars-weather.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MarsWeatherComponent } from './mars-weather/mars-weather.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ChartsModule,
     HttpClientModule
   ],
   providers: [],
