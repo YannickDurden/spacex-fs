@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   nasa_key : 'GaoG4702nIgR1xmwhZWQkvfvXalGzraaBkr5qW4B',
+  github_account : 'yannickdurden',
 };
 
 /*

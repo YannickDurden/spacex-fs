@@ -5,4 +5,5 @@ export interface ApiInfo {
   organization: string;
   organization_link: string;
   description: string;
+  docs: string;
 }

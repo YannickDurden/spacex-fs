@@ -19,8 +19,8 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
   minSpeedWind: Array<number> = [];
   maxSpeedWind: Array<number> = [];
   marsWeatherSubscription: Subscription;
-  isTempDisplayed = true;
-  title = 'Air Temperature (celsius)';
+  isTempDisplayed = false;
+  title = 'Wind Speed (meter per second)';
 
   // Chart
   barChartOptions: ChartOptions;
@@ -39,10 +39,10 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
         this.weather = res;
         this.hydratelabelsChart(res);
         this.hydrataDataChart(res);
-        this.barChartOptions = this.createChartOptions('start', 'start');
+        this.barChartOptions = this.createChartOptions('end', 'end');
         this.barChartData = [
-          { data: this.minTemp, label: 'Min' },
-          { data: this.maxTemp, label: 'Max' }
+          { data: this.minSpeedWind, label: 'Min' },
+          { data: this.maxSpeedWind, label: 'Max' }
         ];
       });
   }

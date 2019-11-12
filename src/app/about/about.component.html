@@ -1,32 +1,76 @@
-<div class="content" *ngIf="apiInfo">
-	<div class="row">
-		<div class="col-sm-12 description">
-			<p>{{ apiInfo.description }}</p>
-		</div>
-	</div>
-
-	<div class="row table-responsive">
-		<table class="table table-dark">
-			<thead>
-				<tr>
-					<th scope="col">Project name</th>
-					<th scope="col">Version</th>
-					<th scope="col">Project Link</th>
-					<th scope="col">Docs</th>
-					<th scope="col">Organization</th>
-					<th scope="col">Organization Link</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>{{ apiInfo.project_name }}</td>
-					<td>{{ apiInfo.version }}</td>
-					<td><a href="{{ apiInfo.project_link }}">{{ apiInfo.project_link }}</a></td>
-					<td>{{ apiInfo.organization }}</td>
-					<td><a href="{{ apiInfo.organization_link }}">{{ apiInfo.organization_link }}</a></td>
-				</tr>
-				<tr>
-			</tbody>
-		</table>
-	</div>
+<div class="row" *ngIf="gitHubAccount">
+  <div class="col-sm-6 col-md-12">
+    <div class="card mb-2 box-shadow">
+      <div class="card-header">{{ gitHubAccount.name }}</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              <img
+                class="float-right"
+                src="{{ gitHubAccount.avatar_url }}"
+                alt="img-account"
+              />
+              <a href="{{ gitHubAccount.html_url }}">{{ gitHubAccount.html_url }}</a>
+              <br>
+              <a href="https://surlescocottes.xyz">https://surlescocottes.xyz</a>
+              <br><br>
+              <em>Made by a fan on Earth</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="apiInfo">
+  <div class="col-sm-6 col-md-6">
+    <div class="card mb-2 box-shadow">
+      <div class="card-header">SpaceX Informations</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>All informations about SpaceX are provided by SpaceX API:</p>
+            <p>
+              {{ apiInfo.description }}
+            </p>
+            <small
+              >Source:
+              <a href="{{ apiInfo.project_link }}">{{
+                apiInfo.project_link
+              }}</a></small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="card mb-2 box-shadow">
+      <div class="card-header">Mars Weather Informations</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="">
+            <p>All informations about Mars weather are provided by NASA API:</p>
+            <p>
+              NASA’s InSight Mars lander takes continuous weather measurements
+              (temperature, wind, pressure) on the surface of Mars at Elysium
+              Planitia, a flat, smooth plain near Mars’ equator.
+            </p>
+            <p>
+              This API provides per-Sol summary data for each of the last seven
+              available Sols (Martian Days). As more data from a particular Sol
+              are downlinked from the spacecraft (sometimes several days later),
+              these values are recalculated, and consequently may change as more
+              data are received on Earth.
+            </p>
+            <small
+              >Source:
+              <a href="https://api.nasa.gov/">https://api.nasa.gov/</a></small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
