@@ -1,7 +1,7 @@
 <div class="row" *ngIf="weather">
 	<div class="col-sm-12 col-md-12">
 		<div class="card mb-2 box-shadow">
-			<div class="card-header">Latest Weather at Elysium Planitia</div>
+			<div class="card-header weather-title h5">Latest Weather at Elysium Planitia</div>
 			<div class="card-body">
 				<div class="row ">
 					<!-- Display only 4 last days -->
@@ -36,17 +36,18 @@
 							</table>
 						</div>
 					</div>
-					<div class="col-md-12 mt-3 py-3 wrap-weather">
-						<h5 class="card-title">Mars weather 7 days report - {{ title }}</h5>
+					<div class="col-md-12 mt-3 py-3 wrap-weather" *ngIf="dataAvailable">
+						<h5 class="card-title weather-title">Mars weather 7 days report - {{ title }}</h5>
 						<button class="btn btn-sm btn-primary" (click)="toggleData()">Toggle data</button>
-						<canvas baseChart
-							[datasets]="barChartData"
-							[labels]="barChartLabels"
-							[options]="barChartOptions"
-							[plugins]="barChartPlugins"
-							[legend]="barChartLegend"
+						<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+							[options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
 							[chartType]="barChartType">
 						</canvas>
+						<p class="my-3" *ngIf="dataMissing">
+							<ngb-alert [dismissible]="false">
+								<strong>Warning!</strong>Data not yet available for every days
+							</ngb-alert>
+						</p>
 					</div>
 				</div>
 			</div>

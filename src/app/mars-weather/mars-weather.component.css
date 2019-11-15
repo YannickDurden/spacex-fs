@@ -1,3 +1,7 @@
 .wrap-weather {
-    background-color: rgba(0, 0, 0, 0.171);
+  background-color: rgba(0, 0, 0, 0.171);
+}
+
+.weather-title {
+font-family: 'Raleway', sans-serif;
 }

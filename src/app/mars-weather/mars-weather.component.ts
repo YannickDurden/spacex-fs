@@ -21,6 +21,8 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
   marsWeatherSubscription: Subscription;
   isTempDisplayed = false;
   title = 'Wind Speed (meter per second)';
+  dataAvailable = false;
+  dataMissing = false;
 
   // Chart
   barChartOptions: ChartOptions;
@@ -35,16 +37,18 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.marsWeatherSubscription = this.nasaService
       .getMarsWeather()
-      .subscribe(res => {
-        this.weather = res;
-        this.hydratelabelsChart(res);
-        this.hydrataDataChart(res);
-        this.barChartOptions = this.createChartOptions('end', 'end');
-        this.barChartData = [
-          { data: this.minSpeedWind, label: 'Min' },
-          { data: this.maxSpeedWind, label: 'Max' }
-        ];
-      });
+      .subscribe(
+        res => {
+          this.weather = res;
+          this.hydrataDataChart(res);
+          this.hydratelabelsChart(res);
+          this.barChartOptions = this.createChartOptions('end', 'end');
+          this.barChartData = [
+            { data: this.minSpeedWind, label: 'Min' },
+            { data: this.maxSpeedWind, label: 'Max' }
+          ];
+        }
+    );
   }
 
   ngOnDestroy() {
@@ -53,16 +57,28 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
 
   hydrataDataChart(weather) {
     weather.sol_keys.forEach(v => {
-      const mnTemp = weather[v].AT.mn;
-      const mxTemp = weather[v].AT.mx;
-      const mnSpeedWind = weather[v].HWS.mn;
-      const mxSpeedWind = weather[v].HWS.mx;
+      const at = weather[v].AT;
+      const mnTemp = at ? at.mn : 0;
+      const mxTemp = at ? at.mx : 0;
+      const hws = weather[v].HWS;
+      const mnSpeedWind = hws ? hws.mn : 0;
+      const mxSpeedWind = hws ? hws.mx : 0;
+
+      if (hws === undefined) {
+        this.dataMissing = true;
+      }
+
+      if (at === undefined) {
+        this.dataMissing = true;
+      }
 
       this.minTemp.push(mnTemp.toFixed(2));
       this.maxTemp.push(mxTemp.toFixed(2));
 
       this.maxSpeedWind.push(mxSpeedWind.toFixed(2));
       this.minSpeedWind.push(mnSpeedWind.toFixed(2));
+
+      this.dataAvailable = true;
     });
   }
 
@@ -85,6 +101,7 @@ export class MarsWeatherComponent implements OnInit, OnDestroy {
 
     const dataMin = this.isTempDisplayed ? this.minTemp : this.minSpeedWind;
     const dataMax = this.isTempDisplayed ? this.maxTemp : this.maxSpeedWind;
+
     this.barChartData = [
       { data: dataMin, label: 'Min' },
       { data: dataMax, label: 'Max' }

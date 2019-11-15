@@ -21,7 +21,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.apiInfoSubscription = this.spacexService
     .getApiInfo()
     .subscribe(
-      (res: ApiInfo) => {this.apiInfo = res; console.log(res);}
+      (res: ApiInfo) => this.apiInfo = res
     );
 
     this.apiInfoSubscription = this.githubService

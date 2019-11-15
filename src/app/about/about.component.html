@@ -1,5 +1,5 @@
 <div class="row" *ngIf="gitHubAccount">
-  <div class="col-sm-6 col-md-12">
+  <div class="col-md-12">
     <div class="card mb-2 box-shadow">
       <div class="card-header">{{ gitHubAccount.name }}</div>
       <div class="card-body">
@@ -9,13 +9,13 @@
               <img
                 class="float-right"
                 src="{{ gitHubAccount.avatar_url }}"
-                alt="img-account"
+                alt="img-accounti"
               />
               <a href="{{ gitHubAccount.html_url }}">{{ gitHubAccount.html_url }}</a>
               <br>
               <a href="https://surlescocottes.xyz">https://surlescocottes.xyz</a>
               <br><br>
-              <em>Made by a fan on Earth</em>
+              <em>This is a fan site made on Earth with <span class="heart">&hearts;</span></em>
             </p>
           </div>
         </div>
@@ -50,7 +50,7 @@
       <div class="card-header">Mars Weather Informations</div>
       <div class="card-body">
         <div class="row">
-          <div class="">
+          <div class="col-md-12">
             <p>All informations about Mars weather are provided by NASA API:</p>
             <p>
               NASA’s InSight Mars lander takes continuous weather measurements
