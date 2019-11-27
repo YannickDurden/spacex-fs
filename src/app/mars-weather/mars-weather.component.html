@@ -5,7 +5,7 @@
 			<div class="card-body">
 				<div class="row ">
 					<!-- Display only 4 last days -->
-					<div class="col-md-3 py-3 wrap-weather" *ngFor="let solKey of weather.sol_keys | slice:3:7">
+					<div class="col-md-3 py-3" *ngFor="let solKey of weather.sol_keys | slice:3:7; let isLast = last"[class.border-right]="!isLast">
 						<div class="card-title">
 							<h5>Sol {{ solKey }}</h5>
 							<small>{{ weather[solKey].First_UTC | date:'EEEE d, MMMM yyyy' }}</small>
@@ -36,9 +36,9 @@
 							</table>
 						</div>
 					</div>
-					<div class="col-md-12 mt-3 py-3 wrap-weather" *ngIf="dataAvailable">
+					<div class="col-md-12 mt-3 py-3" *ngIf="dataAvailable">
 						<h5 class="card-title weather-title">Mars weather 7 days report - {{ title }}</h5>
-						<button class="btn btn-sm btn-primary" (click)="toggleData()">Toggle data</button>
+						<button class="btn btn-sm btn-success" (click)="toggleData()">Toggle data</button>
 						<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
 							[options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
 							[chartType]="barChartType">
