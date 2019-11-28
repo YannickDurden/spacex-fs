@@ -87,3 +87,16 @@ interface PayloadWeight {
   kg: number;
   lb: number;
 }
+
+interface Core {
+  core_serial: string;
+  flight: number;
+  block: number;
+  gridfins: any;
+  legs: any;
+  reused: boolean;
+  land_success: any;
+  landing_intent: any;
+  landing_type: any;
+  landing_vehicle: any;
+}

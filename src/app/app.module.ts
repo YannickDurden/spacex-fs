@@ -11,6 +11,9 @@ import { RocketsComponent } from './rockets/rockets.component';
 import { AboutComponent } from './about/about.component';
 import { MarsWeatherComponent } from './mars-weather/mars-weather.component';
 import { ChartsModule } from 'ng2-charts';
+import { LaunchesComponent } from './launches/launches.component';
+import { PastLaunchesComponent } from './launches/past-launches/past-launches.component';
+import { NextLaunchComponent } from './launches/next-launch/next-launch.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ChartsModule } from 'ng2-charts';
     RocketComponent,
     RocketsComponent,
     AboutComponent,
-    MarsWeatherComponent
+    MarsWeatherComponent,
+    LaunchesComponent,
+    PastLaunchesComponent,
+    NextLaunchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,17 @@
-<div class="row" *ngIf="gitHubAccount">
+<div class="row">
   <div class="col-md-12">
     <div class="card mb-2 box-shadow">
-      <div class="card-header">{{ gitHubAccount.name }}</div>
+      <div class="card-header">Yannick Durden</div>
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
             <p>
               <img
                 class="float-right"
-                src="{{ gitHubAccount.avatar_url }}"
-                alt="img-accounti"
+                src="assets/images/batman_face.png"
+                alt="batman_face"
               />
-              <a href="{{ gitHubAccount.html_url }}">{{ gitHubAccount.html_url }}</a>
+              <a href="https://github.com/YannickDurden">https://github.com/YannickDurden</a>
               <br>
               <a href="https://surlescocottes.xyz">https://surlescocottes.xyz</a>
               <br><br>
@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="row" *ngIf="apiInfo">
+<div class="row">
   <div class="col-sm-6 col-md-6">
     <div class="card mb-2 box-shadow">
       <div class="card-header">SpaceX Informations</div>
@@ -32,14 +32,11 @@
           <div class="col-md-12">
             <p>All informations about SpaceX are provided by SpaceX API:</p>
             <p>
-              {{ apiInfo.description }}
+              Open Source REST API for rocket, core, capsule, pad, and launch data, created and maintained by the developers of the r/SpaceX organization
             </p>
-            <small
-              >Source:
-              <a href="{{ apiInfo.project_link }}">{{
-                apiInfo.project_link
-              }}</a></small
-            >
+            <small>
+              Source: <a href="https://github.com/r-spacex/SpaceX-API">https://github.com/r-spacex/SpaceX-API</a>
+            </small>
           </div>
         </div>
       </div>

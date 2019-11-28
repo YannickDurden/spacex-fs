@@ -30,4 +30,22 @@ export class SpacexService {
 
     return this.httpClient.get(url);
   }
+
+  getNextLaunch() {
+  const url = 'https://api.spacexdata.com/v3/launches/next';
+
+  return this.httpClient.get(url);
+  }
+
+  getPastLaunches() {
+    const url = 'https://api.spacexdata.com/v3/launches/past';
+
+    return this.httpClient.get(url);
+  }
+
+  getMission(missionId: string) {
+    const url = 'https://api.spacexdata.com/v3/missions/'+ missionId;
+
+    return this.httpClient.get(url);
+  }
 }
