@@ -13,7 +13,7 @@ export interface Launch {
    tentative_max_precision: string;
    tbd: boolean;
    launch_window: number;
-   rocket: Rocket;
+   rocket: any;
    ships: Array<any>;
    telemetry: {
      flight_club: any
@@ -44,8 +44,8 @@ interface  LaunchSite {
 
 interface Links {
   mission_patch: string;
-  mission_patch_small: string
-  reddit_campaign: any,
+  mission_patch_small: string;
+  reddit_campaign: any;
   reddit_launch: any;
   reddit_recovery: any;
   reddit_media: any;

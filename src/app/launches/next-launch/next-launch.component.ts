@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
-import { SpacexService } from "../../services/spacex.service";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SpacexService } from '../../services/spacex.service';
 import { Launch } from '../../models/launch';
 import { Mission } from '../../models/mission';
 
 @Component({
-  selector: "app-next-launch",
-  templateUrl: "./next-launch.component.html",
-  styleUrls: ["./next-launch.component.css"]
+  selector: 'app-next-launch',
+  templateUrl: './next-launch.component.html',
+  styleUrls: ['./next-launch.component.css']
 })
 export class NextLaunchComponent implements OnInit, OnDestroy {
   nextLaunch: Launch;
