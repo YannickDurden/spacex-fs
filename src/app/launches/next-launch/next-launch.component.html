@@ -1,146 +1,148 @@
-<div class="row pt-3" *ngIf="mission">
-  <div class="col-sm-12 col-md-12 card-deck">
-    <div class="card mb-2 box-shadow">
-      <div class="card-header">Mission: {{ mission.mission_name }}</div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-12">
-            <p>{{ mission.description }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div *ngIf="nextLaunch">
-  <div class="row">
+<div *ngIf="nextLaunch; else spinner">
+  <div class="row pt-3" *ngIf="mission">
     <div class="col-sm-12 col-md-12 card-deck">
       <div class="card mb-2 box-shadow">
-        <div class="card-header">
-          Mission name: {{ nextLaunch.mission_name }}
-        </div>
+        <div class="card-header">Mission: {{ mission.mission_name }}</div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <h5 class="card-title">Launch Informations</h5>
-              <div class="card-text table-responsive">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Flight number</td>
-                      <td class="text-right">
-                        {{ nextLaunch.flight_number }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Launch Date UTC</td>
-                      <td class="text-right">
-                        {{ nextLaunch.launch_date_utc | date: "long" }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Launch Date Local</td>
-                      <td class="text-right">
-                        {{ nextLaunch.launch_date_local | date: "long" }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Launch site</td>
-                      <td class="text-right">
-                        {{ nextLaunch.launch_site.site_name_long }}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <p>{{ mission.description }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-12 card-deck">
-      <div class="card mb-2 box-shadow">
-        <div class="card-header">
-          Rocket: {{ nextLaunch.rocket.rocket_name }}
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="card-title">First Stage</h5>
-              <div class="card-text table-responsive">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Core</td>
-                      <td class="text-right">
-                        Core serial
-                        {{ nextLaunch.rocket.first_stage.cores[0].core_serial }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Flight</td>
-                      <td class="text-right">
-                        {{ nextLaunch.rocket.first_stage.cores[0].flight }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Reused</td>
-                      <td class="text-right">
-                        {{ nextLaunch.rocket.first_stage.cores[0].reused }}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+  <div *ngIf="nextLaunch">
+    <div class="row" [ngClass]="{'pt-3': !mission}">
+      <div class="col-sm-12 col-md-12 card-deck">
+        <div class="card mb-2 box-shadow">
+          <div class="card-header">
+            Mission name: {{ nextLaunch.mission_name }}
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="card-title">Launch Informations</h5>
+                <div class="card-text table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Flight number</td>
+                        <td class="text-right">
+                          {{ nextLaunch.flight_number }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Launch Date UTC</td>
+                        <td class="text-right">
+                          {{ nextLaunch.launch_date_utc | date: "long" }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Launch Date Local</td>
+                        <td class="text-right">
+                          {{ nextLaunch.launch_date_local | date: "long" }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Launch site</td>
+                        <td class="text-right">
+                          {{ nextLaunch.launch_site.site_name_long }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <h5 class="card-title">Second Stage</h5>
-              <div class="card-text table-responsive">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Payload</td>
-                      <td class="text-right">
-                        {{
-                          nextLaunch.rocket.second_stage.payloads[0].payload_id
-                        }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Manufacturer</td>
-                      <td class="text-right">
-                        {{
-                          nextLaunch.rocket.second_stage.payloads[0]
-                            .manufacturer
-                        }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Reused</td>
-                      <td class="text-right">
-                        {{ nextLaunch.rocket.second_stage.payloads[0].reused }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Orbit</td>
-                      <td class="text-right">
-                        {{ nextLaunch.rocket.second_stage.payloads[0].orbit }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Customers</td>
-                      <td class="text-right">
-                        {{
-                          customersAsString(
-                            nextLaunch.rocket.second_stage.payloads[0].customers
-                          )
-                        }}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 card-deck">
+        <div class="card mb-2 box-shadow">
+          <div class="card-header">
+            Rocket: {{ nextLaunch.rocket.rocket_name }}
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="card-title">First Stage</h5>
+                <div class="card-text table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Core</td>
+                        <td class="text-right">
+                          Core serial
+                          {{ nextLaunch.rocket.first_stage.cores[0].core_serial }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Flight</td>
+                        <td class="text-right">
+                          {{ nextLaunch.rocket.first_stage.cores[0].flight }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Reused</td>
+                        <td class="text-right">
+                          {{ nextLaunch.rocket.first_stage.cores[0].reused }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h5 class="card-title">Second Stage</h5>
+                <div class="card-text table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Payload</td>
+                        <td class="text-right">
+                          {{
+                            nextLaunch.rocket.second_stage.payloads[0].payload_id
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Manufacturer</td>
+                        <td class="text-right">
+                          {{
+                            nextLaunch.rocket.second_stage.payloads[0]
+                              .manufacturer
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Reused</td>
+                        <td class="text-right">
+                          {{ nextLaunch.rocket.second_stage.payloads[0].reused }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Orbit</td>
+                        <td class="text-right">
+                          {{ nextLaunch.rocket.second_stage.payloads[0].orbit }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Customers</td>
+                        <td class="text-right">
+                          {{
+                            customersAsString(
+                              nextLaunch.rocket.second_stage.payloads[0].customers
+                            )
+                          }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -149,3 +151,6 @@
     </div>
   </div>
 </div>
+<ng-template #spinner>
+    <app-spinner></app-spinner>
+</ng-template>

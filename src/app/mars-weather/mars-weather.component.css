@@ -5,3 +5,10 @@
 .weather-title {
 font-family: 'Raleway', sans-serif;
 }
+
+@media screen and (max-width: 767px) {
+  .graph-weather {
+    display: none;
+    }
+  }
+

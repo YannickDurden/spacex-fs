@@ -19,21 +19,29 @@ export class NextLaunchComponent implements OnInit, OnDestroy {
   constructor(private spacexService: SpacexService) {}
 
   ngOnInit() {
-    this.nextLaunchSub = this.spacexService.getNextLaunch().subscribe(
-      (res: Launch) => (this.nextLaunch = res),
-      error => console.log(error),
-      () => {
-        const missionId = this.nextLaunch.mission_id[0];
-        this.missionSub = this.spacexService
-          .getMission(missionId)
-          .subscribe((res: Mission) => (this.mission = res));
-      }
+    this.nextLaunchSub = this.spacexService
+      .getNextLaunch()
+      .subscribe(
+        (res: Launch) => (this.nextLaunch = res),
+        error => console.log(error),
+        () => {
+          const missionId = this.nextLaunch.mission_id[0];
+          if (missionId) {
+            this.missionSub = this.spacexService
+            .getMission(missionId)
+            .subscribe((res: Mission) => (this.mission = res));
+          }
+        }
     );
   }
 
   ngOnDestroy() {
-    this.nextLaunchSub.unsubscribe();
-    this.missionSub.unsubscribe();
+    if (this.nextLaunchSub !== undefined && !this.nextLaunchSub.closed) {
+      this.nextLaunchSub.unsubscribe();
+    }
+    if (this.missionSub !== undefined && !this.missionSub.closed) {
+      this.missionSub.unsubscribe();
+    }
   }
 
   customersAsString(customers: Array<string>): string {

@@ -32,4 +32,8 @@ export class RocketsComponent implements OnInit, OnDestroy {
 
     return length > 0 ? images[0] : null;
   }
+
+  isActive(active: boolean): string {
+    return active ? 'active' : 'retired';
+  }
 }

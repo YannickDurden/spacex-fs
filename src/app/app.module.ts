@@ -14,6 +14,7 @@ import { ChartsModule } from 'ng2-charts';
 import { LaunchesComponent } from './launches/launches.component';
 import { PastLaunchesComponent } from './launches/past-launches/past-launches.component';
 import { NextLaunchComponent } from './launches/next-launch/next-launch.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NextLaunchComponent } from './launches/next-launch/next-launch.componen
     MarsWeatherComponent,
     LaunchesComponent,
     PastLaunchesComponent,
-    NextLaunchComponent
+    NextLaunchComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

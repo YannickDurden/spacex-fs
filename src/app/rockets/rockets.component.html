@@ -1,7 +1,14 @@
-<div class="row">
+<div class="row" *ngIf="rockets; else spinner">
 	<div class="col-sm-6 col-md-12 card-deck" *ngFor="let rocket of rockets">
 		<div class="card mb-2 box-shadow">
-      <div class="card-header">{{ rocket.rocket_name }}</div>
+      <div class="card-header">
+        {{ rocket.rocket_name }}
+        <span
+        class="badge badge-pill badge-success"
+        [ngClass]="{'badge-success': rocket.active, 'badge-danger' : !rocket.active}">
+        {{ isActive(rocket.active) }}
+      </span>
+      </div>
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md-6">
@@ -16,3 +23,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #spinner>
+    <app-spinner></app-spinner>
+</ng-template>

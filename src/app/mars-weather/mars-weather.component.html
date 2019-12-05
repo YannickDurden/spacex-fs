@@ -1,4 +1,4 @@
-<div class="row" *ngIf="weather">
+<div class="row" *ngIf="weather; else spinner">
 	<div class="col-sm-12 col-md-12">
 		<div class="card mb-2 box-shadow">
 			<div class="card-header weather-title h5">Latest Weather at Elysium Planitia</div>
@@ -36,7 +36,7 @@
 							</table>
 						</div>
 					</div>
-					<div class="col-md-12 mt-3 py-3" *ngIf="dataAvailable">
+					<div class="col-md-12 mt-3 py-3 graph-weather" *ngIf="dataAvailable">
 						<h5 class="card-title weather-title">Mars weather 7 days report - {{ title }}</h5>
 						<button class="btn btn-sm btn-success" (click)="toggleData()">Toggle data</button>
 						<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
@@ -54,3 +54,7 @@
 		</div>
 	</div>
 </div>
+
+<ng-template #spinner>
+    <app-spinner></app-spinner>
+</ng-template>

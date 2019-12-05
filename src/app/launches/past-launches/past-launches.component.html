@@ -1,19 +1,34 @@
-<div class="card-columns pt-3" *ngIf="pastLaunches">
+<div class="card-columns pt-3" *ngIf="pastLaunches; else spinner">
 	<div class="card" *ngFor="let pastLaunche of pastLaunches | slice: 0:9;let i = index; trackBy: trackByFunction">
+    <div class="card-header">
+        <h5 class="card-title">{{ pastLaunche.mission_name }}</h5>
+    </div>
 		<div class="img w-50 m-auto pt-3">
 			<img [src]="pastLaunche.links.mission_patch_small" class="card-img-top" alt="mission_patch">
           </div>
 			<div class="card-body">
-				<h5 class="card-title">{{ pastLaunche.mission_name }} - {{ pastLaunche.flight_number }}</h5>
+        <span class="flight-number">
+          Flight number: {{ pastLaunche.flight_number }}
+        </span>
+        <br>
+        <span class="launch-date">
+            Launch date UTC: {{ pastLaunche.launch_date_utc | date: "short" }}
+        </span>
+        <br>
 				<span
 					class="card-subtitle badge badge-pill badge-success mb-3"
 					[ngClass]="{'badge-success': pastLaunche.launch_success, 'badge-danger' : !pastLaunche.launch_success}">
 					{{ isLaunchSuccess(pastLaunche.launch_success) }}
-				</span>
-				<p class="card-text">{{ pastLaunche.details }}</p>
+        </span>
+        <hr class="mt-0">
+				<p class="card-text">{{ pastLaunche.details|slice:0:150 }}[...]</p>
 			</div>
 			<div class="card-footer">
-				<a href="#" class="btn btn-primary btn-sm more-info">More infos</a>
+				<a href="#" class="btn btn-primary btn-sm more-info disabled">More infos</a>
 			</div>
 		</div>
 </div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
