@@ -18,7 +18,10 @@ export class PastLaunchesComponent implements OnInit, OnDestroy {
     this.pastLaunchesSub = this.spacexService
       .getPastLaunches()
       .subscribe((res: Array<Launch>) => {
-        this.pastLaunches = res.sort((a, b) => a.flight_number < b.flight_number ? 1 : 0);
+        // this.pastLaunches = res.sort((a, b) => a.flight_number < b.flight_number ? 1 : 0);
+        const length = res.length;
+        this.pastLaunches = res.slice(length - 9);
+        this.pastLaunches.sort((a, b) => b.flight_number - a.flight_number);
       });
   }
 
